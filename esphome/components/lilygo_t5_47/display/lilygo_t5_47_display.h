@@ -22,7 +22,7 @@ class LilygoT547Display : public PollingComponent, public display::DisplayBuffer
   int get_height_internal() override;
 
   void fill(Color color) override;
-  
+
   void on_shutdown() override;
 
   void set_full_update_every(uint32_t value) { this->full_update_every_ = value; }
@@ -40,6 +40,8 @@ class LilygoT547Display : public PollingComponent, public display::DisplayBuffer
   void flush_screen_changes();
   void power_on();
   void power_off();
+
+  display::DisplayType get_display_type() override { return display::DisplayType::DISPLAY_TYPE_BINARY; }
 
  protected:
   void HOT draw_absolute_pixel_internal(int x, int y, Color color) override;
